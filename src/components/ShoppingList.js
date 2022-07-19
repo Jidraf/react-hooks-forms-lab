@@ -5,11 +5,21 @@ import Item from "./Item";
 
 function ShoppingList({ items }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [input, setInput] = useState("");
+  const [list, setList] = useState(items);
 
   function handleCategoryChange(event) {
     setSelectedCategory(event.target.value);
   }
 
+  function handleInputChange(event){
+    setInput(event.target.value)
+  }
+  
+  function updateList(newInput){
+    setList([...list, newInput])
+  }
+  
   const itemsToDisplay = items.filter((item) => {
     if (selectedCategory === "All") return true;
 
